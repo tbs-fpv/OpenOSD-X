@@ -34,6 +34,11 @@ endif()
 
 option(USE_RTT "Enable SEGGER RTT support" OFF)
 option(INAV_FONT "Embed the 512-character INAV font" OFF)
+option(ARDUPILOT_FONT "Embed the 256-character ArduPilot font" OFF)
+
+if(INAV_FONT AND ARDUPILOT_FONT)
+    message(FATAL_ERROR "INAV_FONT and ARDUPILOT_FONT are mutually exclusive")
+endif()
 
 # Add options to select resolution mode
 option(RESOLUTION_HD "Build with HD resolution" OFF)
@@ -41,6 +46,10 @@ option(RESOLUTION_HD "Build with HD resolution" OFF)
 if(INAV_FONT)
     message(STATUS "INAV font enabled")
     add_compile_definitions(INAV_FONT=1)
+endif()
+if(ARDUPILOT_FONT)
+    message(STATUS "ArduPilot font enabled")
+    add_compile_definitions(ARDUPILOT_FONT=1)
 endif()
 
 # Setup compiler settings

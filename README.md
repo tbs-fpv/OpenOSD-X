@@ -81,6 +81,11 @@ Font updates can be done directly from the Betaflight Configurator.
 * Use Betaflight firmware built with the custom define `"USE_MSP_DISPLAYPORT_FONT"`
 * Make sure your Configurator version supports this feature
 
+For ArduPilot's native MSP DisplayPort symbols, configure the firmware with
+`-DARDUPILOT_FONT=ON` and leave ArduPilot's `MSP_OPTIONS` `EnableINAVFonts`
+option disabled. The ArduPilot font is converted from its `font0.bin` clarity
+font and stored in the firmware font region.
+
 ---
 
 # For Hardware Developers
